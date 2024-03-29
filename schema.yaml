@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI schema for template ubuntu-terraform-main
+  version: v0.3.0
+components:
+  schemas:
+    variables:
+      properties:
+        boot:
+          default: order=scsi0;net0
+          description: Boot Order
+          title: Boot
+          type: string
+          x-walrus-ui:
+            group: Specs
+            order: 4
+        bridge:
+          default: vmbr0
+          title: Bridge
+          type: string
+          x-walrus-ui:
+            group: Network
+            order: 1
+        clone:
+          description: Template to Clone
+          title: Clone
+          type: string
+          x-walrus-ui:
+            group: Info
+            order: 5
+        cloud_init_sshkeys:
+          default: ''
+          format: password
+          title: Cloud Init Sshkeys
+          type: string
+          writeOnly: true
+          x-walrus-ui:
+            group: Cloud-init
+            order: 22
+        cloud_init_user:
+          title: Cloud Init User
+          type: string
+          x-walrus-ui:
+            group: Cloud-init
+            order: 21
+        cores:
+          default: 2
+          title: Cores
+          type: number
+          x-walrus-ui:
+            group: Specs
+            order: 11
+        cpu_model:
+          default: host
+          description: CPU type
+          title: Cpu Model
+          type: string
+          x-walrus-ui:
+            group: Specs
+            order: 12
+        description:
+          default: Created by Terraform
+          title: Description
+          type: string
+          x-walrus-ui:
+            group: Info
+            order: 8
+        disk_size:
+          default: 10G
+          title: Disk Size
+          type: string
+          x-walrus-ui:
+            group: Storage
+            order: 19
+        ipconfig0:
+          default: ip=dhcp
+          title: Ipconfig0
+          type: string
+          x-walrus-ui:
+            group: Network
+            order: 15
+        memory:
+          default: 1024
+          title: Memory
+          type: number
+          x-walrus-ui:
+            group: Specs
+            order: 14
+        network_model:
+          default: virtio
+          title: Network Model
+          type: string
+          x-walrus-ui:
+            group: Network
+            order: 18
+        network_tag:
+          default: 0
+          title: Network Tag
+          type: number
+          x-walrus-ui:
+            group: Network
+            order: 17
+        onboot:
+          default: true
+          description: Auto Boot
+          title: Onboot
+          type: boolean
+          x-walrus-ui:
+            group: Info
+            order: 23
+        proxmox_api_token_id:
+          description: API Token ID for Proxmox
+          format: password
+          title: Proxmox Api Token Id
+          type: string
+          x-walrus-ui:
+            group: Provider
+            order: 1
+        proxmox_api_token_secret:
+          description: API Token Secret for
+          format: password
+          title: Proxmox Api Token Secret
+          type: string
+          x-walrus-ui:
+            group: Provider
+            order: 2
+        proxmox_api_url:
+          description: Proxmox URL (https://<Proxmox-IP>:8006/api2/json/)
+          title: Proxmox Api Url
+          type: string
+          x-walrus-ui:
+            group: Provider
+            order: 3
+        storage_name:
+          title: Storage Name
+          type: string
+          x-walrus-ui:
+            group: Storage
+            order: 20
+        tags:
+          default: terraform,automation
+          title: Tags
+          type: string
+          x-walrus-ui:
+            group: Info
+            order: 10
+        target_node:
+          description: Node Name the VM should be on
+          title: Target Node
+          type: string
+          x-walrus-ui:
+            group: Info
+            order: 4
+        vm_pool:
+          default: Unassigned
+          title: Vm Pool
+          type: string
+          x-walrus-ui:
+            group: Info
+            order: 9
+        vmid:
+          default: 0
+          title: Vmid
+          type: number
+          x-walrus-ui:
+            group: Info
+            order: 6
+      required:
+        - clone
+        - cloud_init_user
+        - proxmox_api_token_id
+        - proxmox_api_token_secret
+        - proxmox_api_url
+        - storage_name
+        - target_node
+        - cloud_init_sshkeys
+      type: object
+      x-walrus-ui:
+        groupOrder:
+          - Provider
+          - Info
+          - Specs
+          - Storage
+          - Network
+          - Cloud-init
+tags:
+  - name: user-edited
